@@ -25,7 +25,7 @@ int main() {
 
             }
         }
-
+        // Доп  1
         if (i & 1){
             odd_sum += a;
         }

@@ -8,10 +8,10 @@ int main() {
 	std::cin >> A >> B >> C;
 	if (A > 0 && B > 0 && C > 0) {
 		if (A > B && B > C) {
-			std::cout << A - B - C << " A - B - C" << std::endl;
+			std::cout << A - B - C << " A > B & B > C" << std::endl;
 		}
 		else if (B > A && B % C == 0) {
-			std::cout << B / C + B - A << " B/C + B - A" << std::endl;
+			std::cout << B / C + B - A << " B > A & B % C" << std::endl;
 		}
 		else {
 			std::cout << A + B + C << " A + B + C " << std::endl;

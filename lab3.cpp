@@ -65,5 +65,5 @@ int main() {
 
 	std::cout << "Enter a number -1 or 1: " << std::endl;
 	std::cin >> x;
-std::cout << (x == 1 ? "Positive Number" : x == -1 ? "Negative Number" : "Invalid Number") << std::endl;
+	std::cout << (x == 1 ? "Positive Number" : x == -1 ? "Negative Number" : "Invalid Number") << std::endl;
 }

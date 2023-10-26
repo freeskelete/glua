@@ -13,7 +13,7 @@ int main() {
     cin >> N;
     cout << "Введите " << N << "элементов последовательности";
 
-    double even_sum = 0, odd_sum = 0;
+    double even_sum = 0, double odd_sum = 0;
 
     for (int i = 0; i < N; i++) {
         cin >> a;

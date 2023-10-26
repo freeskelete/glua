@@ -1,4 +1,5 @@
-/* #include <iostream>
+/*
+#include <iostream>
 int N;
 int a;
 int sum = 0;
@@ -12,6 +13,8 @@ int main() {
     cin >> N;
     cout << "Введите " << N << "элементов последовательности";
 
+    double even_sum = 0, odd_sum = 0;
+
     for (int i = 0; i < N; i++) {
         cin >> a;
         if (a % 2 == 0) {
@@ -23,16 +26,24 @@ int main() {
             }
         }
 
+        if (i & 1){
+            odd_sum += a;
+        }
+        else {
+            even_sum += a;
+        }
+
 
     }
     cout << "Сумма чётных чисел = " << sum << endl;
     cout << "Максимальное чётное значение = " << b << endl;
-    cout << "Номер в последовательности - " << max_index;
+    cout << "Номер наибольшего чётного в последовательности - " << max_index;
 
     return 0;
 
 }
 */
+
 
 #include <iostream>
 #include <cmath>

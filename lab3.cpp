@@ -65,16 +65,5 @@ int main() {
 
 	std::cout << "Enter a number -1 or 1: " << std::endl;
 	std::cin >> x;
-
-	switch(x) {
-		case -1:
-			std::cout << "Negative number" << std::endl;
-			break;
-		case 1:
-			std::cout << " Positive number" << std::endl;
-			break;
-		default:
-			std::cout << "Invalid number" << std::endl;
-			break;
-	}
+std::cout << (x == 1 ? "Positive Number" : x == -1 ? "Negative Number" : "Invalid Number") << std::endl;
 }

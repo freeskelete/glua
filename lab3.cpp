@@ -14,7 +14,7 @@ int main() {
 			std::cout << B / C + B - A << " B > A & B % C" << std::endl;
 		}
 		else {
-			std::cout << A + B + C << " A + B + C " << std::endl;
+			std::cout << A + B + C << std::endl;
 		}
 	}
 	else {

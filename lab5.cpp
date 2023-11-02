@@ -21,7 +21,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         tmp = array[i];
         digitEqual = true;
-        if (tmp < 11) {
+        if (tmp < 10) {
             continue;
         }
         if (tmp < 100 && tmp % 10 == (tmp / 10)) {
@@ -29,7 +29,7 @@ int main() {
             break;
         }
         else {
-            while (tmp > 10) {
+            while (tmp >= 10) { //
                 if (tmp % 10 != (tmp / 10) % 10) {
                     digitEqual = false;
                     break;
@@ -122,9 +122,9 @@ int main() {
             min_row = i;
         }
     }
-
+ 
     for (int j = 0; j < mm; ++j) {
-        matrix[min_row][j] = 0;
+        matrix[min_row][j] = 0; //
     }
     for (int i = 0; i < nn; i++) {
         for (int j = 0; j < mm; ++j) {

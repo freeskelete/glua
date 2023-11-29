@@ -10,7 +10,7 @@ const int Symb = 7;
 void main()
 {
 	setlocale(0, "RU");
-	/*
+	
 	char Alphabet[Alph] = "абвгдеёжзийклмнопрстуфхцчшщьъэюя";
 	char Symbols[Symb] = ".,:;!?";
 	char gl_ru[GL_Ru] = "ауоиэыяюеё";
@@ -57,7 +57,7 @@ void main()
 	for (int i = 0; i < Symb - 1; i++) {
 		std::cout << Symbols[i] << "->" << int(unsigned char(Symbols[i])) << "\n";
 	}
-	*/
+	
 
 	
 	std::ifstream text("text.txt");
@@ -142,3 +142,98 @@ void main()
 	
 }
 
+
+/*
+
+// 1 Доп.
+#include <iostream>
+#include <fstream>
+using namespace std;
+void main()
+{
+	setlocale(0, "");
+	bool flag;
+	string out;
+	cout << "(0)кодировка ( )декодировка" << endl;
+	cin >> flag;
+	if (flag)
+	{	//Декодировка
+		ifstream cod("cod.txt");
+		while (!cod.eof())
+		{
+			string word;
+			short cnt = 0;
+			cod >> word;
+			if (flag)
+				flag = false;
+			else out += " ";
+			for(char c:word)//for (int j = 0; j < word.length(); j++)
+			{
+				if (isdigit(c))
+					cnt++;
+				else
+					for (int i = 0, ii = cnt - 1; i < cnt; i++, ii--)
+							for(int count=(int(word[i]) - 48) * pow(10, ii);count >0;count--)
+									out += c;
+			}
+		}
+	}
+	else
+	{	//Кодировка
+		ifstream cod("cod.txt");
+		while (!cod.eof())
+		{
+			string word;
+			cod >> word;
+			int cnt = 0;
+			for (char alfa : word)	//while (word[cnt] != '\0') cnt++;
+				cnt++;
+			if (flag)
+				out += " ";
+			else flag = true;
+			string ch;
+			while (cnt)
+			{
+				ch += char(cnt % 10) + 48;
+				cnt /= 10;
+			}
+			for (int i = 0, j = ch.length() - 1; i < ch.length() / 2; i++, j--)
+			{
+				swap(ch[i], ch[j]);
+			}
+			out += ch;
+			out += word[0];
+		}
+
+	}
+	ofstream cod1("cod.txt");
+		cod1 << out;
+}
+*/
+
+
+/*
+// 2 Доп.
+#include <iostream>
+#include <fstream>
+using namespace std;
+void main(){
+	setlocale(0, "");
+	ifstream text("Text.txt"); // открываем файд Text.txt его кодировка должна быть ANSI
+	string out; // создаем строку в которую будем записывать получившийся текст
+	while (!text.eof()){// идем по файлу пока не его конец
+		string word;// создаем строку для слова
+		text >> word; // считываем слово из текста
+		int l = word.length(); // запоминаем длинну данного нам слова
+		for (int c = 0; c < l; c++){//идем до конца слова
+			if (tolower(word[c]) == tolower(word[c + 1])){//текущая буква равна следующей то записываем ее в верхнем регистре
+				word[c] = char(toupper(word[c]));//переводим букву в верхний регистр
+				word[c + 1] = char(toupper(word[c + 1]));
+				word+= '('; word+= word[c]; word+= word[c]; word+= ')';//записываем в конец слова скобки и две буквы
+			}
+		}
+		out += word; out += ' ';// добавляем в строку новое слово и пробел
+	}
+	ofstream Text("Text.txt"); Text << out;//открываем файл на запись и записываем получившуюся строку
+}
+*/

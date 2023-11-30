@@ -152,7 +152,7 @@ void main()
 	setlocale(0, "");
 	bool flag;
 	string out;
-	cout << "(0)кодировка ( )декодировка" << endl;
+	cout << "(0)кодировка (любое другое число)декодировка" << endl;
 	cin >> flag;
 	if (flag)
 	{	//Декодировка

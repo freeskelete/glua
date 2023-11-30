@@ -1,4 +1,4 @@
-/*#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <windows.h>
 
@@ -10,7 +10,7 @@ const int Symb = 7;
 void main()
 {
 	setlocale(0, "RU");
-	
+
 	char Alfavit[Alph] = "абвгдеёжзийклмнопрстуфхцчшщьъэюя";
 	char Symbols[Symb] = ".,:;!?";
 	char gl_ru[GL_Ru] = "ауоиэыяюеё";
@@ -50,16 +50,16 @@ void main()
 			continue;
 		}
 		std::cout << char(Alfavit[i] - 32) << "->" << int(unsigned char(Alfavit[i] - 32)) << "\n";
-		if (Alfavitt[i] == 0)
+		if (Alfavit[i] == 0)
 			break;
 	}
 	std::cout << "\nSymbols\n\n";
 	for (int i = 0; i < Symb - 1; i++) {
 		std::cout << Symbols[i] << "->" << int(unsigned char(Symbols[i])) << "\n";
 	}
-	
 
-	
+
+
 	std::ifstream text("text.txt");
 	std::ifstream inp("input.txt");
 	std::string array_word[10];
@@ -139,10 +139,10 @@ void main()
 	std::cout << "\n";
 	for (int i = 0; i < cnt_word; i++)
 		std::cout << "<" << array_word[i] << ">" << "\n";
-	
-}
-*/
 
+}
+
+/*
 // 1 Доп.
 #include <iostream>
 #include <fstream>
@@ -165,14 +165,14 @@ void main()
 			if (flag)
 				flag = false;
 			else out += " ";
-			for(char c:word)//for (int j = 0; j < word.length(); j++)
+			for (char c : word)//for (int j = 0; j < word.length(); j++)
 			{
 				if (isdigit(c))
 					cnt++;
 				else
 					for (int i = 0, ii = cnt - 1; i < cnt; i++, ii--)
-							for(int count=(int(word[i]) - 48) * pow(10, ii);count >0;count--)
-									out += c;
+						for (int count = (int(word[i]) - 48) * pow(10, ii); count > 0; count--)
+							out += c;
 			}
 		}
 	}
@@ -205,23 +205,23 @@ void main()
 
 	}
 	ofstream cod1("cod.txt");
-		cod1 << out;
+	cod1 << out;
 }
 
 
-/*
+
 // 2 Доп.
 #include <iostream>
 #include <fstream>
 using namespace std;
 void main(){
 	setlocale(0, "");
-	ifstream text("Text.txt"); 
-	string out; 
+	ifstream text("Text.txt");
+	string out;
 	while (!text.eof()){
 		string word;
-		text >> word; 
-		int l = word.length(); 
+		text >> word;
+		int l = word.length();
 		for (int c = 0; c < l; c++){
 			if (tolower(word[c]) == tolower(word[c + 1])){
 				word[c] = char(toupper(word[c]));

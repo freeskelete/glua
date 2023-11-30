@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 #include <fstream>
 #include <windows.h>
 
@@ -11,7 +11,7 @@ void main()
 {
 	setlocale(0, "RU");
 	
-	char Alphabet[Alph] = "абвгдеёжзийклмнопрстуфхцчшщьъэюя";
+	char Alfavit[Alph] = "абвгдеёжзийклмнопрстуфхцчшщьъэюя";
 	char Symbols[Symb] = ".,:;!?";
 	char gl_ru[GL_Ru] = "ауоиэыяюеё";
 	char sogl_ru[Sogl_Ru] = "бвгджзйклмнпрстфхцчшщ";
@@ -38,19 +38,19 @@ void main()
 	}
 	std::cout << "\n";
 
-	std::cout << "\nAlphabet\n\n";
+	std::cout << "\nAlfavit\n\n";
 	for (int i = 0; i < 32; i++) {
-		std::cout << Alphabet[i] << "->" << int(unsigned char(Alphabet[i])) << "\n";
-		if (Alphabet[i] == 0)
+		std::cout << Alfavit[i] << "->" << int(unsigned char(Alfavit[i])) << "\n";
+		if (Alfavit[i] == 0)
 			break;
 	}
 	for (int i = 0; i < 32; i++) {
-		if (Alphabet[i] == 'ё') {
+		if (Alfavit[i] == 'ё') {
 			std::cout << 'Ё' << "->" << int(unsigned char('Ё')) << "\n";
 			continue;
 		}
-		std::cout << char(Alphabet[i] - 32) << "->" << int(unsigned char(Alphabet[i] - 32)) << "\n";
-		if (Alphabet[i] == 0)
+		std::cout << char(Alfavit[i] - 32) << "->" << int(unsigned char(Alfavit[i] - 32)) << "\n";
+		if (Alfavitt[i] == 0)
 			break;
 	}
 	std::cout << "\nSymbols\n\n";
@@ -141,9 +141,7 @@ void main()
 		std::cout << "<" << array_word[i] << ">" << "\n";
 	
 }
-
-
-/*
+*/
 
 // 1 Доп.
 #include <iostream>
@@ -209,7 +207,6 @@ void main()
 	ofstream cod1("cod.txt");
 		cod1 << out;
 }
-*/
 
 
 /*
@@ -219,21 +216,21 @@ void main()
 using namespace std;
 void main(){
 	setlocale(0, "");
-	ifstream text("Text.txt"); // открываем файд Text.txt его кодировка должна быть ANSI
-	string out; // создаем строку в которую будем записывать получившийся текст
-	while (!text.eof()){// идем по файлу пока не его конец
-		string word;// создаем строку для слова
-		text >> word; // считываем слово из текста
-		int l = word.length(); // запоминаем длинну данного нам слова
-		for (int c = 0; c < l; c++){//идем до конца слова
-			if (tolower(word[c]) == tolower(word[c + 1])){//текущая буква равна следующей то записываем ее в верхнем регистре
-				word[c] = char(toupper(word[c]));//переводим букву в верхний регистр
+	ifstream text("Text.txt"); 
+	string out; 
+	while (!text.eof()){
+		string word;
+		text >> word; 
+		int l = word.length(); 
+		for (int c = 0; c < l; c++){
+			if (tolower(word[c]) == tolower(word[c + 1])){
+				word[c] = char(toupper(word[c]));
 				word[c + 1] = char(toupper(word[c + 1]));
-				word+= '('; word+= word[c]; word+= word[c]; word+= ')';//записываем в конец слова скобки и две буквы
+				word+= '('; word+= word[c]; word+= word[c]; word+= ')';
 			}
 		}
-		out += word; out += ' ';// добавляем в строку новое слово и пробел
+		out += word; out += ' ';
 	}
-	ofstream Text("Text.txt"); Text << out;//открываем файл на запись и записываем получившуюся строку
+	ofstream Text("Text.txt"); Text << out;
 }
 */

@@ -10,17 +10,19 @@ const int Symb = 7;
 void main()
 {
 	setlocale(0, "RU");
-
+	
 	char Alfavit[Alph] = "абвгдеёжзийклмнопрстуфхцчшщьъэюя";
 	char Symbols[Symb] = ".,:;!?";
 	char gl_ru[GL_Ru] = "ауоиэыяюеё";
 	char sogl_ru[Sogl_Ru] = "бвгджзйклмнпрстфхцчшщ";
 	int cnt = 0;
-
 	char str[N_max] = "ёолаырорашииыв;'./";
+	int len_string = 0;
+	while (str[len_string] != '\0') {
+		len_string++;
+	}
 
-
-	for (int i = 0; i < N_max; i++) {
+	for (int i = 0; i < len_string; i++) {
 		for (int j = 0; j < GL_Ru; j++) {
 			if (str[i] == 'ё') {
 				str[i] = 'Ё';
@@ -58,7 +60,7 @@ void main()
 		std::cout << Symbols[i] << "->" << int(unsigned char(Symbols[i])) << "\n";
 	}
 
-
+	
 
 	std::ifstream text("text.txt");
 	std::ifstream inp("input.txt");
@@ -141,6 +143,7 @@ void main()
 		std::cout << "<" << array_word[i] << ">" << "\n";
 
 }
+
 
 /*
 // 1 Доп.

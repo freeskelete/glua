@@ -1,23 +1,25 @@
 #include <iostream>
 #include <fstream>
+
+// Проверка столбцов, натуральных абсолютных и сортировка. Пункт 1.
 using namespace std;
-int Size=0;
+int n = 0;
 int mas[12][12];
 bool read()
 {
-    ifstream file("size_mas_variables.txt");
+    ifstream file("size_massiv.txt");
     if (file.is_open())
     {
 
         int num;
         file >> num;
-        Size = num;
+        n = num;
         int i = 0, j = 0;
         while (!file.eof())
         {
-            for (int i = 0; i < Size; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < Size; j++)
+                for (int j = 0; j < n; j++)
                 {
                     file >> mas[i][j];
                 }
@@ -28,33 +30,38 @@ bool read()
     }
     else
     {
-        cout << "Файл не открыт чтение не возможно";
+        cout << "Невозможно считать файл";
         return false;
     }
 }
 void print()
 {
-    for (int i = 0; i < Size; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < Size; j++)
+        for (int j = 0; j < n; j++)
         {
-            cout << mas[i][j]<<'\t';
+            cout << mas[i][j] << '\t';
         }
         cout << endl;
     }
 }
-bool mimic_col()
+
+bool equal_col()
 {
-    for (int i = 0; i < Size-1; i++)
+    for (int i = 0; i < n - 1; i++)
     {
         bool flag = true;
-        for (int j = 0; j < Size; j++)
+        for (int j = 0; j < n; j++)
         {
-            if (mas[j][i]!=mas[j][i+1])
+            for (int c = i + 1; c < n - 1; c++)
             {
-                flag = false;
-                break;
+                if (mas[j][i] != mas[j][c])
+                {
+                    flag = false;
+                    break;
+                }
             }
+
         }
         if (flag)
         {
@@ -65,14 +72,14 @@ bool mimic_col()
 }
 bool simple_number()
 {
-    for (int i = 0; i < Size; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < Size; j++)
+        for (int j = 0; j < n; j++)
         {
-            bool flag=true;
+            bool flag = true;
             for (int c = 2; c <= sqrt(abs(mas[i][j])); c++)
             {
-                if (abs(mas[i][j])%c==0)
+                if (abs(mas[i][j]) % c == 0)
                 {
                     flag = false;
                     break;
@@ -86,27 +93,39 @@ bool simple_number()
     }
     return 0;
 }
+
 void Sort()
 {
-    for (int i = 0; i < Size; i++)
+    for (int j = 0; j < n - 1; j++)
     {
-        for (int j = 0; j < Size-1; j++)
+        for (int i = 0; i < n - 1; i++)
         {
-            if (abs(mas[i][j]) > abs(mas[i][j + 1]))
+            int sum1 = 0, sum2 = 0;
+            for (int j = 0; j < n; j++)
             {
-                swap(mas[i][j], mas[i][j + 1]);
+                sum1 += mas[i][j];
+                sum2 += mas[i + 1][j];
+            }
+            if (sum1 > sum2)
+            {
+                for (int c = 0; c < n; c++)
+                {
+                    swap(mas[i][c], mas[i + 1][c]);
+                }
             }
         }
     }
 }
+
+
 void write()
 {
-    ofstream file("result_matrix.txt");
+    ofstream file("result.txt");
     if (file.is_open())
     {
-        for (int i = 0; i < Size; i++)
+        for (int i = 0; i < n; i++)
         {
-            for (int j = 0; j < Size; j++)
+            for (int j = 0; j < n; j++)
             {
                 file << mas[i][j] << '\t';
             }
@@ -115,11 +134,13 @@ void write()
         file.close();
     }
     else
-        cout << "Файл не открыт запись не возможна\n";
+        cout << "Запись не возможна\n";
 }
-int function(int x)
+
+// Перегруз функции. Пункт 2
+int function(int x) // Вовзращение суммы для целого(integer)
 {
-    int sum=0;
+    int sum = 0;
     while (x)
     {
         sum += abs(x) % 10;
@@ -127,35 +148,35 @@ int function(int x)
     }
     return sum;
 }
-double function(double x)
+double function(double x) // Возвращение целой части для дробного(float/double)
 {
-    if (x<0&&int(x)==x)
+    if (x < 0 && int(x) == x)
     {
         return int(x);
     }
-    else if (x<0)
+    else if (x < 0)
     {
-        return int(x)-1;
+        return int(x) - 1;
     }
     return int(x);
 }
 void main()
 {
-    // Пункт 1
+    // Запуск пункта 1
 
-    /*setlocale(0, "");
+    setlocale(0, "");
     if (read())
     {
         cout << "Исходная матрица\n";
         print();
-        if (mimic_col() && simple_number())
+        if (equal_col() && simple_number())
             Sort();
         cout << "Преобразованная матрица" << endl;
         write();
         print();
-    }*/
+    }
 
-    // Пункт 2
+    // Запуск пункта 2
 
     /*setlocale(0, "");
     int x;
@@ -168,4 +189,3 @@ void main()
     cout << function(y);*/
 
 }
-

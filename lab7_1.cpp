@@ -96,15 +96,15 @@ bool simple_number()
 
 void Sort()
 {
-    for (int j = 0; j < n - 1; j++)
+    for (int j = 0; j < n; j++)
     {
         for (int i = 0; i < n - 1; i++)
         {
             int sum1 = 0, sum2 = 0;
-            for (int j = 0; j < n; j++)
+            for (int p = 0; p < n; p++)
             {
-                sum1 += mas[i][j];
-                sum2 += mas[i + 1][j];
+                sum1 += mas[i][p];
+                sum2 += mas[i + 1][p];
             }
             if (sum1 > sum2)
             {

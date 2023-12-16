@@ -1,5 +1,6 @@
 #include <iostream>
 using namespace std;
+int Norma(int* A[], int M, int N);
 int main()
 {
     // Пункт 1
@@ -54,7 +55,7 @@ int main()
 
     //setlocale(0, "");
     //int M, N;
-    //cout << "Ввдите размеры матрицы сначала сторки затем столбцы: ";
+    //cout << "Ввдите размеры матрицы. Строки, Столбцы: ";
     //cin >> M >> N;
     ////Задаем динамический массив
     //int** A = new int* [M];
